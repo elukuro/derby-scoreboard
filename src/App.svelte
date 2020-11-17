@@ -39,13 +39,13 @@
 	}
 
 	let challenges = [];
-
+	
 	onMount(async () => {
 		console.warn(`this is simillar with compontnt did mount`)
 	});
 	async function fetchData() {
 		const res = await getData();
-		challenges = res.data;
+		challenges =res.data;
 	}
   
 </script>
@@ -60,7 +60,11 @@
 	{:else}
 		<p>no title</p>
 	{/if}
-	{JSON.stringify(challenges)}
+	<ul>
+		{#each challenges as challenge}
+		<li>{JSON.stringify(challenge.athlete.firstname)}</li>
+		{/each}
+	</ul>
 </main>
 
 <style>
