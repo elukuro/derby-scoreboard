@@ -7,11 +7,16 @@ html, body {
 body {
 	color: #333;
 	margin: 0;
-	padding: 8px;
+	padding: 0px;
 	box-sizing: border-box;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	background:#fff;
 }
-
+p,h1,h2{
+	padding:0px;
+	margin:0px;
+	line-height: auto;
+}
 a {
 	color: rgb(0,100,200);
 	text-decoration: none;
