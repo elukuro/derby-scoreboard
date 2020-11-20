@@ -33,15 +33,7 @@
 		<Podium podium={podium}/>
 		<div class="result">
 			{#each challenges as challenge,index}
-				<Card challenge={challenge} index={0}/>
-				<Card challenge={challenge} index={1}/>
-				<Card challenge={challenge} index={2}/>
-				<Card challenge={challenge} index={3}/>
-				<Card challenge={challenge} index={4}/>
-				<Card challenge={challenge} index={5}/>
-				<Card challenge={challenge} index={6}/>
-				<Card challenge={challenge} index={7}/>
-				<Card challenge={challenge} index={8}/>
+				<Card challenge={challenge} index={index}/>
 			{/each}
 		</div>
 	</div>

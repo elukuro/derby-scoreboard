@@ -2,5 +2,5 @@
     export let podium
 </script>
 <article>
-    {JSON.stringify(podium)}
+    <h1>test</h1>
 </article>
