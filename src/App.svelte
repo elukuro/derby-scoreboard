@@ -21,8 +21,8 @@
 	});
 	async function fetchData() {
 		const res = await getData();
-		challenges =res.data;
-		podium = challenges.slice(0, 3);
+		challenges =res.data.slice(3);
+		podium = res.data.slice(0, 3);
 	}
 	
   
@@ -30,7 +30,9 @@
 
 <main>
 	<div class="challenge">
-		<Podium podium={podium}/>
+		{#if podium.length >= 3}
+			<Podium podium={podium}/>
+		{/if}
 		<div class="result">
 			{#each challenges as challenge,index}
 				<Card challenge={challenge} index={index}/>
@@ -44,8 +46,9 @@
 		background: #1488CC;  /* fallback for old browsers */
 		background: -webkit-linear-gradient(to top, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
 		background: linear-gradient(to top, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-		padding-top:300px;
+		padding-top:40px;
 		position: relative;
+		overflow: hidden;
 		&:before{
 			content:'Strava Running Distance Challenge';
 			position: absolute;
@@ -55,7 +58,7 @@
 			display: block;
 			color:#1488CC;
 			line-height: 1em;
-			transform: skewY(20deg);
+			transform: skewY(-20deg);
 			top:0;
 			left:0;
 			font-weight: bold;
@@ -68,6 +71,7 @@
 			height:320px;
 			overflow:scroll;
 			position: relative;
+			z-index: 2;
 			
 		}
 	}

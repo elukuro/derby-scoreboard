@@ -8,15 +8,15 @@
 <article class="cardScore">
     <slot></slot>
     <div class="athlete">
-        <h2>#{index +1}</h2>
+        <h2>#{index +4}</h2>
         <img src={athlete.profile} alt="profile image"/>
         <div class="athlete-info">
-            <p><span>{athlete.firstname} {athlete.lastname}</span></p>
+            <h4><span>{athlete.firstname} {athlete.lastname}</span></h4>
             <p><span>{challenge.athlete.city}</span></p>
         </div>
     </div>
     <div class="workout">
-        <p>{Math.floor(workout.distance/1000)}<span>KM</span> {workout.count}<span>Run</span> {Math.floor(workout.moving_time/60/60)}<span>Hour</span></p> 
+        <p>{Math.floor(workout.distance/1000)} <span>KM</span> {workout.count} <span>Run</span> {Math.floor(workout.moving_time/60/60)} <span>Hour</span></p> 
     </div>
 </article>
 <style lang="scss">
@@ -44,6 +44,17 @@
                     font-size: 12px;
                     text-transform: capitalize;
                 }
+                h4{
+                    font-size: 12px;
+                    margin:0;
+                    padding:0;
+                    text-transform: capitalize;
+                    color:#333;
+                    width:150px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
             }
         }
         h2{
@@ -60,7 +71,7 @@
                   font-weight: normal;
                   font-size: 8px;
               }
-          }  
+          } 
         }
     }
 </style>
