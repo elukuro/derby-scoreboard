@@ -33,11 +33,16 @@
 		{#if podium.length >= 3}
 			<Podium podium={podium}/>
 		{/if}
-		<div class="result">
-			{#each challenges as challenge,index}
-				<Card challenge={challenge} index={index}/>
-			{/each}
-		</div>
+		{#if challenges.length >=1}
+			<div class="result">
+				{#each challenges as challenge,index}
+					<Card challenge={challenge} index={index}/>
+				{/each}
+			</div>
+		{/if}
+	</div>
+	<div class="sync">
+		<a href="https://www.strava.com/oauth/authorize?client_id=35087&redirect_uri=http://localhost:3000/autorize-challenge&scope=read_all&state=generate&response_type=code">Sync</a>
 	</div>
 </main>
 
@@ -64,7 +69,7 @@
 			font-weight: bold;
 		}
 		.result{
-			padding:40px 10px;
+			padding:40px 10px 0px 10px;
 			background:#fff;
 			border-top-left-radius:20px;
 			border-top-right-radius:20px;
@@ -73,6 +78,25 @@
 			position: relative;
 			z-index: 2;
 			
+		}
+	}
+	.sync{
+		position: fixed;
+		bottom: 0px;
+		width: 100%;
+		text-align: center;
+		box-shadow: 0px 1px 3px #ccc;
+		a{
+			display: block;
+			width:100%;
+			text-transform: uppercase;
+			padding:10px 0px;
+			font-weight: bold;
+			color: #1488CC;
+			font-size: 20px;
+			&:focus{
+				text-decoration: none;
+			}
 		}
 	}
 	
