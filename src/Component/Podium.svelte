@@ -24,7 +24,7 @@
      z-index: 2;
      justify-content: space-around;
      align-items: flex-end;
-     flex-direction: row-reverse;
+     // flex-direction: row-reverse;
      position:relative;
      z-index: 2;
      bottom:-5px;

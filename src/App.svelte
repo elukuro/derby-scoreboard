@@ -15,7 +15,8 @@
 	}
 
 	let challenges = [];
-	let podium = []
+	let podium = [];
+	let height = 0;
 	onMount(async () => {
 		fetchData();
 	});
@@ -27,17 +28,20 @@
 	
   
 </script>
-
+<svelte:window bind:innerHeight={height}/>
 <main>
 	<div class="challenge">
+	
 		{#if podium.length >= 3}
 			<Podium podium={podium}/>
 		{/if}
 		{#if challenges.length >=1}
 			<div class="result">
-				{#each challenges as challenge,index}
-					<Card challenge={challenge} index={index}/>
-				{/each}
+				<div class="result-wrapper" style="height:{Math.floor(height/2 - 40)}px">
+					{#each challenges as challenge,index}
+						<Card challenge={challenge} index={index}/>
+					{/each}
+				</div>
 			</div>
 		{/if}
 	</div>
@@ -73,11 +77,12 @@
 			background:#fff;
 			border-top-left-radius:20px;
 			border-top-right-radius:20px;
-			height:320px;
-			overflow:scroll;
 			position: relative;
 			z-index: 2;
-			
+			&-wrapper{
+				overflow:scroll;
+				padding:10px 1px;
+			}
 		}
 	}
 	.sync{
