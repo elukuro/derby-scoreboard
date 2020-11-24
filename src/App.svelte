@@ -30,9 +30,8 @@
 </script>
 <svelte:window bind:innerHeight={height}/>
 <main>
-	<div class="challenge">
-	
-		{#if podium.length >= 3}
+	<div class="challenge" style="min-height:{Math.floor(height)}px">
+		{#if podium.length >= 1}
 			<Podium podium={podium}/>
 		{/if}
 		{#if challenges.length >=1}
@@ -46,7 +45,7 @@
 		{/if}
 	</div>
 	<div class="sync">
-		<a href="https://www.strava.com/oauth/authorize?client_id=35087&redirect_uri=http://localhost:3000/autorize-challenge&scope=read_all&state=generate&response_type=code">Sync</a>
+		<a href="https://www.strava.com/oauth/authorize?client_id=35087&redirect_uri={url}/autorize-challenge&scope=read_all&state=generate&response_type=code">Sync</a>
 	</div>
 </main>
 
