@@ -31,7 +31,7 @@
 <svelte:window bind:innerHeight={height}/>
 <main>
 	<div class="challenge" style="min-height:{Math.floor(height)}px">
-		{#if podium.length >= 1}
+		{#if podium.length >= 3}
 			<Podium podium={podium}/>
 		{/if}
 		{#if challenges.length >=1}
@@ -58,7 +58,7 @@
 		position: relative;
 		overflow: hidden;
 		&:before{
-			content:'Strava Running Distance Challenge';
+			content:'Running Distance Challenge';
 			position: absolute;
 			font-size: 80px;
 			text-align: left;
