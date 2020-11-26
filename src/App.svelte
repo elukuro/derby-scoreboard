@@ -31,7 +31,7 @@
 <svelte:window bind:innerHeight={height}/>
 <main>
 	<div class="challenge" style="min-height:{Math.floor(height)}px">
-		{#if podium.length >= 3}
+		{#if podium.length >= 1}
 			<Podium podium={podium}/>
 		{/if}
 		{#if challenges.length >=1}
