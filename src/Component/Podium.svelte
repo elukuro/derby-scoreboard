@@ -61,7 +61,8 @@
              border-radius:50px;
              display:block;
              margin:0 auto;
-             border: 4px solid #1488CC
+             border: 4px solid #1488CC;
+             width:100px;
          }
          p{
             font-size: 14px;
