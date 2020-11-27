@@ -38,6 +38,19 @@
 				<div class="result-wrapper" style="height:{Math.floor(height/2)-20}px">
 					{#each challenges as challenge,index}
 						<Card challenge={challenge} index={index}/>
+						<Card challenge={challenge} index={index}/>
+						<Card challenge={challenge} index={index}/>
+						<Card challenge={challenge} index={index}/>
+						<Card challenge={challenge} index={index}/>
+						<Card challenge={challenge} index={index}/>
+						<Card challenge={challenge} index={index}/>
+						<Card challenge={challenge} index={index}/>
+						<Card challenge={challenge} index={index}/>
+						<Card challenge={challenge} index={index}/>
+						<Card challenge={challenge} index={index}/>
+						<Card challenge={challenge} index={index}/>
+						<Card challenge={challenge} index={index}/>
+						<Card challenge={challenge} index={index}/>
 					{/each}
 				</div>
 			</div>
@@ -84,20 +97,25 @@
 	}
 	.sync{
 		position: fixed;
-		bottom: 0px;
-		width: 100%;
+		bottom: 10%;
+		right:0px;
+		width:60px;
 		text-align: center;
 		box-shadow: 0px 1px 3px #ccc;
 		z-index:2;
-		background:#fff;
+		background: #1488CC;  /* fallback for old browsers */
+		background: -webkit-linear-gradient(to top, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to top, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		border-top-left-radius: 30px;
+		border-bottom-left-radius: 30px;
 		a{
 			display: block;
 			width:100%;
 			text-transform: uppercase;
 			padding:10px 0px;
 			font-weight: bold;
-			color: #1488CC;
-			font-size: 20px;
+			color: #fafafa;
+			font-size: 14px;
 			&:focus{
 				text-decoration: none;
 			}
