@@ -1,7 +1,7 @@
 <script>
      export let challenge;
      export let index;
-     let workout = challenge.workout.ytd_run_totals;
+     let workout = challenge.workout.recent_run_totals;
      let athlete = challenge.athlete;
 </script>
 

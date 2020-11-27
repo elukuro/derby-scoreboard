@@ -10,7 +10,7 @@
                 <div class="athlete-info">
                     <p>{winner.athlete.firstname}</p>
                     <span>
-                        {Math.floor(winner.workout.ytd_run_totals.distance/1000)}<span>KM</span>
+                        {Math.floor(winner.workout.recent_run_totals.distance/1000)}<span>KM</span>
                     </span> 
                 </div>
             </div>
