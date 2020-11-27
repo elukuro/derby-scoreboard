@@ -35,7 +35,7 @@
 			<Podium podium={podium}/>
 		{/if}
 			<div class="result">
-				<div class="result-wrapper" style="height:{Math.floor(height/2)}px">
+				<div class="result-wrapper" style="height:{Math.floor(height/2)-20}px">
 					{#each challenges as challenge,index}
 						<Card challenge={challenge} index={index}/>
 					{/each}
@@ -88,6 +88,8 @@
 		width: 100%;
 		text-align: center;
 		box-shadow: 0px 1px 3px #ccc;
+		z-index:2;
+		background:#fff;
 		a{
 			display: block;
 			width:100%;
