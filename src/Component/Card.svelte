@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="workout">
-        <p>{Math.floor(workout.distance/1000)} <span>KM</span> {workout.count} <span>Run</span> {Math.floor(workout.moving_time/60/60)} <span>Hour</span></p> 
+        <p>{Math.floor(workout.distance/1000)} <span>KM</span> <br/>{workout.count} <span>Run</span> {Math.floor(workout.moving_time/60/60)} <span>Hour</span></p> 
     </div>
 </article>
 <style lang="scss">

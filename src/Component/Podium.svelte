@@ -5,7 +5,7 @@
     {#each podium as winner,index}
         <div class="podium-wrapper">
             <div class="podium-info">
-                <img src={winner.athlete.profile} alt="profile image"/>
+                <img src={winner.athlete.profile} alt="image"/>
                 <h1>#{index +1}</h1>
                 <div class="athlete-info">
                     <p>{winner.athlete.firstname}</p>
