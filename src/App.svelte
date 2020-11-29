@@ -6,6 +6,7 @@
 	// yay finally aync await 
 	let url = CONFIG.env.BASE_API_URL;
 	let loading = false;
+	let mode = 'recent_run_totals';
 	async function getData() {
 		loading = true;
 		try{
@@ -16,7 +17,7 @@
 			console.error(error)
 		}
 	}
-
+	let response = {};
 	let challenges = [];
 	let podium = [];
 	let height = 0;
@@ -24,11 +25,17 @@
 		fetchData();
 	});
 	async function fetchData() {
-		const res = await getData();
-		challenges =res.data.slice(3);
-		podium = res.data.slice(0, 3);
+		response = await getData();;
+		challenges =response.data.slice(3);
+		podium = response.data.slice(0, 3);
 	}
-	
+
+	function setMode(val) {
+		mode = val;
+		const sorting =response.data.sort((a,b)=>b.workout[mode].distance - a.workout[mode].distance);
+		challenges =sorting.slice(3);
+		podium = sorting.slice(0, 3);
+	}
   
 </script>
 <svelte:window bind:innerHeight={height}/>
@@ -38,13 +45,13 @@
 	{/if}
 	<div class="challenge">
 		{#if podium.length >= 1}
-			<Podium podium={podium}/>
+	<Podium podium={podium} mode={mode}/>
 		{/if}
 		<div class="result">
 			<div class="result-wrapper" style="height:{Math.floor(height/2)-10}px">
 				{#if challenges.length >=1}
 					{#each challenges as challenge,index}
-						<Card challenge={challenge} index={index}/>
+						<Card challenge={challenge} index={index} mode={mode}/>
 					{/each}
 				{:else}
 					<p>No data avaliable..</p>
@@ -54,6 +61,10 @@
 	</div>
 	<div class="sync">
 		<a href="https://www.strava.com/oauth/authorize?client_id=35087&redirect_uri={url}/autorize-challenge&scope=read_all&state=generate&response_type=code">Sync</a>
+	</div>
+	<div class="mode">
+		<button on:click={()=> setMode('recent_run_totals')} class="{mode === 'recent_run_totals' ? 'active' : ''}">Recent 4 Weeks</button>
+		<button on:click={()=> setMode('ytd_run_totals')} class="{mode === 'ytd_run_totals' ? 'active' : ''}">Year to Date</button>
 	</div>
 </main>
 
@@ -119,6 +130,29 @@
 			&:focus{
 				text-decoration: none;
 			}
+		}
+	}
+	.mode{
+		position:fixed;
+		bottom:0px;
+		z-index:3;
+		background:#fff;
+		box-shadow: 0px 1px 3px #ccc;
+		width:100%;
+		left:0;
+		display:flex;
+		button{
+			border:none;
+			width:50%;
+			font-size: 12px;
+			padding:15px 0px;
+			color:#1488CC;
+			text-transform: uppercase;
+			font-weight:bold;
+		}
+		.active{
+			background: #1488CC;
+			color:#fff;
 		}
 	}
 	.loading{

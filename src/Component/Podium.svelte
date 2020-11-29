@@ -1,5 +1,6 @@
 <script>
     export let podium;
+    export let mode;
 </script>
 <article class="podium">
     {#each podium as winner,index}
@@ -10,7 +11,7 @@
                 <div class="athlete-info">
                     <p>{winner.athlete.firstname}</p>
                     <span>
-                        {Math.floor(winner.workout.recent_run_totals.distance/1000)}<span>KM</span>
+                        {Math.floor(winner.workout[mode].distance/1000)}<span>KM</span>
                     </span> 
                 </div>
             </div>

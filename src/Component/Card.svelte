@@ -1,7 +1,8 @@
 <script>
      export let challenge;
      export let index;
-     let workout = challenge.workout.recent_run_totals;
+     export let mode;
+     let workout = challenge.workout[mode];
      let athlete = challenge.athlete;
 </script>
 
