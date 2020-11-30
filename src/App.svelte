@@ -3,6 +3,7 @@
 	import axios from "axios";
 	import Card from './Component/Card.svelte';
 	import Podium from './Component/Podium.svelte';
+	import CurrentPosition from './Component/CurrentPosition.svelte';
 	// yay finally aync await 
 	let url = CONFIG.env.BASE_API_URL;
 	let loading = false;
@@ -25,7 +26,7 @@
 		fetchData();
 	});
 	async function fetchData() {
-		response = await getData();;
+		response = await getData();
 		challenges =response.data.slice(3);
 		podium = response.data.slice(0, 3);
 	}
@@ -44,8 +45,9 @@
 		<div class="loading"/>
 	{/if}
 	<div class="challenge">
+		<CurrentPosition/>
 		{#if podium.length >= 1}
-	<Podium podium={podium} mode={mode}/>
+			<Podium podium={podium} mode={mode}/>
 		{/if}
 		<div class="result">
 			<div class="result-wrapper" style="height:{Math.floor(height/2)-10}px">
@@ -135,7 +137,7 @@
 	.mode{
 		position:fixed;
 		bottom:0px;
-		z-index:3;
+		z-index:2;
 		background:#fff;
 		box-shadow: 0px 1px 3px #ccc;
 		width:100%;

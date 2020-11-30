@@ -29,6 +29,7 @@
      position:relative;
      z-index: 2;
      bottom:-5px;
+     padding-top:30px;
      &-wrapper{
         background: #83a4d4;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to bottom, #b6fbff, #83a4d4);  /* Chrome 10-25, Safari 5.1-6 */
