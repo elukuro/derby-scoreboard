@@ -1,8 +1,8 @@
 <script>
-
+    export let data;
 </script>
 <div class="current-pos">
-    <span>Hi heru you are in position 1st</span>
+<span>Hi <b>{data.athlete}</b> you're <b>#{data.position}</b> place</span>
 </div>
 
 <style lang="scss">
