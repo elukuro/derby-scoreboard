@@ -6,7 +6,7 @@
     {#each podium as winner,index}
         <div class="podium-wrapper">
             <div class="podium-info">
-                <img src={winner.athlete.profile} alt="image"/>
+                <img src={winner.athlete.profile}/>
                 <h1>#{index +1}</h1>
                 <div class="athlete-info">
                     <p>{winner.athlete.firstname}</p>
@@ -48,6 +48,7 @@
         }
         .podium-info{
          text-align:center;
+         padding:0px 1px;
          h1{
              font-size: 25px;
              color:#1488CC;
@@ -60,11 +61,12 @@
              line-height: 1em;
          }
          img{
-             border-radius:50px;
+             border-radius:60px;
              display:block;
              margin:0 auto;
              border: 4px solid #1488CC;
              width:100px;
+             min-height:100px;
          }
          p{
             font-size: 14px;
