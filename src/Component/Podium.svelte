@@ -1,16 +1,17 @@
 <script>
     export let podium;
+    export let mode;
 </script>
 <article class="podium">
     {#each podium as winner,index}
         <div class="podium-wrapper">
             <div class="podium-info">
-                <img src={winner.athlete.profile} alt="image"/>
+                <img src={winner.athlete.profile}/>
                 <h1>#{index +1}</h1>
                 <div class="athlete-info">
                     <p>{winner.athlete.firstname}</p>
                     <span>
-                        {Math.floor(winner.workout.recent_run_totals.distance/1000)}<span>KM</span>
+                        {Math.floor(winner.workout[mode].distance/1000)}<span>KM</span>
                     </span> 
                 </div>
             </div>
@@ -28,6 +29,7 @@
      position:relative;
      z-index: 2;
      bottom:-5px;
+     padding-top:30px;
      &-wrapper{
         background: #83a4d4;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to bottom, #b6fbff, #83a4d4);  /* Chrome 10-25, Safari 5.1-6 */
@@ -46,6 +48,7 @@
         }
         .podium-info{
          text-align:center;
+         padding:0px 1px;
          h1{
              font-size: 25px;
              color:#1488CC;
@@ -58,11 +61,12 @@
              line-height: 1em;
          }
          img{
-             border-radius:50px;
+             border-radius:60px;
              display:block;
              margin:0 auto;
              border: 4px solid #1488CC;
              width:100px;
+             min-height:100px;
          }
          p{
             font-size: 14px;
