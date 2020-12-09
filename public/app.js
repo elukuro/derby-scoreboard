@@ -1,19 +1,3 @@
-// if('serviceWorker' in navigator) {
-//     navigator.serviceWorker
-//     .register('/service-worker.js')
-//     .then(function(registration){
-//         console.log(
-//             'Service worker registration succesful with scole: ', registration.scope
-//         );
-//     })
-//     .catch(function(err){
-//         console.log('Service Worker registration failed: ', err);
-//     })
-// }
-// if (!('PushManager' in window)) {
-//     throw new Error('No Push API Support!')
-// }
-
 const check = () => {
     if (!('serviceWorker' in navigator)) {
       throw new Error('No Service Worker support!')
@@ -37,18 +21,10 @@ const requestNotificationPermission = async () => {
         throw new Error('Permission not granted for Notification');
     }
 }
-const showLocalNotification = (title, body, swRegistration) => {
-    const options = {
-        body,
-        // here you can add more properties like icon, image, vibrate, etc.
-    };
-    swRegistration.showNotification(title, options);
-}
 
 const main = async () => { //notice I changed main to async function so that I can use await for registerServiceWorker
     check();
-    const swRegistration = await registerServiceWorker();
-    const permission =  await requestNotificationPermission();
-    showLocalNotification('This is title', 'this is the message', swRegistration);
+    // const swRegistration = await registerServiceWorker();
+    // const permission =  await requestNotificationPermission();
 }
 main();
