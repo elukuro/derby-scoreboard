@@ -3,7 +3,7 @@
     "short_name": "DRDC",
     "description": "Derby running distance challenge",
     "scope": ".",
-    "start_url": "https://goheru-66ea0.web.app/",
+    "start_url": "/",
     "display": "standalone",
     "orientation": "portrait",
     "theme_color": "#ffffff",
