@@ -31,11 +31,15 @@ self.addEventListener('activate',async ()=>{
         // const options = { applicationServerKey, userVisibleOnly: true }
         // const subscription = await self.registration.pushManager.subscribe(options)
         // const response = await saveSubscription(subscription)
-        console.log('service worker is active')
+        console.log('[Service worker] is active')
     }catch(err){
         console.log('ERROR',err)
     }
 })
+
+self.addEventListener('install', function(event) {
+    console.log('[Service Worker] Installing Service Worker ...', event);
+});
 
 self.addEventListener('push', function(event) {
     if (event.data) {
