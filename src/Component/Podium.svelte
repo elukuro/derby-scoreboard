@@ -34,8 +34,8 @@
         background: #83a4d4;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to bottom, #b6fbff, #83a4d4);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to bottom, #b6fbff, #83a4d4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        border-top-left-radius: 50px;
-        border-top-right-radius: 50px;
+        border-top-left-radius: 60px;
+        border-top-right-radius: 60px;
         padding-bottom:50px;
         &:nth-child(1){
             height:180px;
@@ -48,7 +48,7 @@
         }
         .podium-info{
          text-align:center;
-         padding:0px 1px;
+         padding:2px;
          h1{
              font-size: 25px;
              color:#1488CC;

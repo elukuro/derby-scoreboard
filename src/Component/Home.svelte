@@ -4,6 +4,7 @@
 	import Card from './Card.svelte';
 	import Podium from './Podium.svelte';
 	import CurrentPosition from './CurrentPosition.svelte';
+	import ConfettiGenerator from "confetti-js";
 
 	// yay finally aync await 
 	let url = CONFIG.env.BASE_API_URL;
@@ -17,6 +18,7 @@
     let currentPosition = {};
 	onMount(async () => {
 		fetchData();
+		confetti();
     });
     
     async function getData() {
@@ -29,7 +31,14 @@
 			console.error(error)
 		}
     }
-    
+    function confetti(){
+		var confettiSettings = {
+			target: 'my-canvas',
+			clock:24,
+		};
+		var confetti = new ConfettiGenerator(confettiSettings);
+		confetti.render();
+	}
 	async function fetchData() {
 		response = await getData();
 		challenges =response.data.slice(3);
