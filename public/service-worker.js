@@ -39,8 +39,8 @@ self.addEventListener('activate',async ()=>{
 
 self.addEventListener('push', function(event) {
     if (event.data) {
-        console.log('Push event!! ', event.data.text())
-        showLocalNotification('yolo',event.data.text(),self.registration);
+        const data = JSON.parse(event.data.text())
+        showLocalNotification(data.title,data.message,self.registration);
     } else {
         console.log('Push event but no data')
     }

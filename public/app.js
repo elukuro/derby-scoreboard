@@ -24,7 +24,7 @@ const requestNotificationPermission = async () => {
 
 const main = async () => { //notice I changed main to async function so that I can use await for registerServiceWorker
     check();
-    // const swRegistration = await registerServiceWorker();
-    // const permission =  await requestNotificationPermission();
+    const swRegistration = await registerServiceWorker();
+    const permission =  await requestNotificationPermission();
 }
 main();
