@@ -13,7 +13,7 @@ const urlB64ToUint8Array = base64String => {
 
 // saveSubscription saves the subscription to the backend
 const saveSubscription = async subscription => {
-    const SERVER_URL = 'http://localhost:4000/save-subscription'
+    const SERVER_URL = 'https://fierce-headland-02005.herokuapp.com/save-subscription'
     const response = await fetch(SERVER_URL, {
         method: 'post',
         headers: {
@@ -48,8 +48,8 @@ self.addEventListener('install', function(event) {
 
 self.addEventListener('push', function(event) {
     if (event.data) {
-        console.log('Push event!! ', event.data.text())
-        showLocalNotification('yolo',event.data.text(),self.registration);
+        const data = JSON.parse(event.data.text())
+        showLocalNotification(data.title,data.message,self.registration);
     } else {
         console.log('Push event but no data')
     }
