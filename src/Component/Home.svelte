@@ -15,20 +15,22 @@
 	let challenges = [];
 	let podium = [];
     let height = 0;
-    let currentPosition = {};
+	let currentPosition = {};
 	onMount(async () => {
 		fetchData();
 		confetti();
     });
-    
     async function getData() {
 		loading = true;
 		try{
 			const response = await axios.get(`${url}/activity-list-challenge`);
+			localStorage.setItem("activityListChallenge",JSON.stringify(response));
 			loading = false;
 			return response;
 		}catch(error){
-			console.error(error)
+			loading = false;
+			const storage = localStorage.getItem("activityListChallenge")
+			return JSON.parse(storage);
 		}
     }
     function confetti(){
