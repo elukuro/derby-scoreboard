@@ -58,21 +58,12 @@ self.addEventListener('activate',async ()=>{
         const applicationServerKey = urlB64ToUint8Array('BGffNEayVQv13jepXYiEW5mgNiwPit1PVWp2IUX0l96Cgav9JSv1q9z3WKu38A7mrimahloCTCQrlxs-3IBjU0g')
         const options = { applicationServerKey, userVisibleOnly: true }
         const subscription = await self.registration.pushManager.subscribe(options)
-        // const response = await saveSubscription(subscription)
+        const response = await saveSubscription(subscription)
         // console.log(response)
     }catch(err){
         console.log('ERROR',err)
     }
 })
-
-self.addEventListener('install', function(event) {
-    console.log('[Service Worker] Installing Service Worker ...', event);
-    // event.waitUntil(
-    //     caches.open('static').then(function(cache) {
-    //         cache.addAll(['/app.js', '/manifest.json']);
-    //     })
-    // );
-});
 
 self.addEventListener('push', function(event) {
     if (event.data) {
