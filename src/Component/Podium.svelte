@@ -6,7 +6,7 @@
     {#each podium as winner,index}
         <div class="podium-wrapper">
             <div class="podium-info">
-                <img src={winner.athlete.profile} onerror="this.src='/icon.png'"/>
+            <img src={winner.athlete.profile} onerror="this.src='/icon.png'" alt={winner.athlete.firstname}/>
                 <h1>#{index +1}</h1>
                 <div class="athlete-info">
                     <p>{winner.athlete.firstname}</p>
