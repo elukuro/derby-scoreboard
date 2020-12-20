@@ -12,7 +12,10 @@
                     <p>{winner.athlete.firstname}</p>
                     <span>
                         {Math.floor(winner.workout[mode].distance/1000)}<span>KM</span>
-                    </span> 
+                    </span><br>
+                    <span>
+                        {winner.workout[mode].count} <span>Run</span> {Math.floor(winner.workout[mode].moving_time/60/60)} <span>Hour</span>
+                    </span>
                 </div>
             </div>
         </div>
@@ -36,7 +39,7 @@
         background: linear-gradient(to bottom, #b6fbff, #83a4d4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         border-top-left-radius: 60px;
         border-top-right-radius: 60px;
-        padding-bottom:50px;
+        padding-bottom:80px;
         &:nth-child(1){
             height:180px;
         }
@@ -81,7 +84,16 @@
             text-overflow: ellipsis;
             width:100px;
          }
-     }
+        }
+        .athlete-info{
+            span{
+                font-size:12px;
+                font-weight: bold;
+                span{
+                    font-weight: normal;
+                }
+            }
+        }
      }
      
  }

@@ -53,7 +53,7 @@
 		const sorting = response.data.sort((a,b)=>b.workout[mode].distance - a.workout[mode].distance);
 		challenges =sorting.slice(3);
         podium = sorting.slice(0, 3);
-        getCurrentPosition(sorting,params.id);
+		getCurrentPosition(sorting,params.id);
     }
     
     function getCurrentPosition(data,id) {
@@ -104,7 +104,7 @@
 		background: #1488CC;  /* fallback for old browsers */
 		background: -webkit-linear-gradient(to top, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
 		background: linear-gradient(to top, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-		padding-top:40px;
+		padding-top:20px;
 		position: relative;
 		overflow: hidden;
 		&:before{
@@ -122,7 +122,7 @@
 			font-weight: bold;
 		}
 		.result{
-			padding:40px 10px 0px 10px;
+			padding:40px 10px 50px 10px;
 			background:#fff;
 			border-top-left-radius:20px;
 			border-top-right-radius:20px;

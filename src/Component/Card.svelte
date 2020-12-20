@@ -9,15 +9,18 @@
 <article class="cardScore">
     <slot></slot>
     <div class="athlete">
-        <h2>#{index +4}</h2>
+    <h2>#{index +4}</h2>
         <img src={athlete.profile} alt="profile image" onerror="this.src='/icon.png'"/>
         <div class="athlete-info">
             <h4><span>{athlete.firstname} {athlete.lastname}</span></h4>
-            <p><span>{challenge.athlete.city}</span></p>
+            <!-- <p><span>{(athlete.city !== undefined) ? athlete.city:''}</span></p> -->
         </div>
     </div>
     <div class="workout">
-        <p>{Math.floor(workout.distance/1000)} <span>KM</span> <br/>{workout.count} <span>Run</span> {Math.floor(workout.moving_time/60/60)} <span>Hour</span></p> 
+        <p>
+            {Math.floor(challenge.workout[mode].distance/1000)} <span>KM</span> <br/>
+            {challenge.workout[mode].count} <span>Run</span> {Math.floor(challenge.workout[mode].moving_time/60/60)} <span>Hour</span>
+        </p> 
     </div>
 </article>
 <style lang="scss">
