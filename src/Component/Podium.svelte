@@ -12,8 +12,8 @@
                     <p>{winner.athlete.firstname}</p>
                     <span>
                         {Math.floor(winner.workout[mode].distance/1000)}<span>KM</span>
-                    </span><br>
-                    <span>
+                    </span>
+                    <span class="detail">
                         {winner.workout[mode].count} <span>Run</span> {Math.floor(winner.workout[mode].moving_time/60/60)} <span>Hour</span>
                     </span>
                 </div>
@@ -56,7 +56,7 @@
              font-size: 25px;
              color:#1488CC;
              margin:0;
-             padding:0;
+             padding:3px 0px 5px 0px;
              line-height: 1em;
          }
          span{
@@ -92,6 +92,10 @@
                 span{
                     font-weight: normal;
                 }
+            }
+            .detail{
+                display:block;
+                position:relative;
             }
         }
      }
