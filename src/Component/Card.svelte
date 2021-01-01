@@ -10,9 +10,9 @@
     <slot></slot>
     <div class="athlete">
     <h2>#{index +4}</h2>
-        <img src={athlete.profile} alt="profile image" onerror="this.src='/icon.png'"/>
+        <img src={challenge.athlete.profile} alt="profile image" onerror="this.src='/icon.png'"/>
         <div class="athlete-info">
-            <h4><span>{athlete.firstname} {athlete.lastname}</span></h4>
+            <h4><span>{challenge.athlete.firstname} {challenge.athlete.lastname}</span></h4>
             <!-- <p><span>{(athlete.city !== undefined) ? athlete.city:''}</span></p> -->
         </div>
     </div>

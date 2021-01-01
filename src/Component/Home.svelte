@@ -9,7 +9,7 @@
 	// yay finally aync await 
 	let url = CONFIG.env.BASE_API_URL;
 	let loading = false;
-	let mode = 'recent_run_totals';
+	let mode = 'ytd_run_totals';
 	export let params = {};
 	let response = {};
 	let challenges = [];
@@ -24,9 +24,10 @@
 		loading = true;
 		try{
 			const response = await axios.get(`${url}/activity-list-challenge`);
-			localStorage.setItem("activityListChallenge",JSON.stringify(response));
+			const sorting = response.data.sort((a,b)=>b.workout[mode].distance - a.workout[mode].distance);
+			localStorage.setItem("activityListChallenge",JSON.stringify(sorting));
 			loading = false;
-			return response;
+			return sorting;
 		}catch(error){
 			loading = false;
 			const storage = localStorage.getItem("activityListChallenge")
@@ -43,16 +44,16 @@
 	}
 	async function fetchData() {
 		response = await getData();
-		challenges =response.data.slice(3);
-        podium = response.data.slice(0, 3);
-        getCurrentPosition(response.data,params.id);
+		challenges =response.slice(3);
+        podium = response.slice(0, 3);
+        getCurrentPosition(response,params.id);
 	}
 
 	function setMode(val) {
 		mode = val;
-		const sorting = response.data.sort((a,b)=>b.workout[mode].distance - a.workout[mode].distance);
+		const sorting = response.sort((a,b)=>b.workout[mode].distance - a.workout[mode].distance);
 		challenges =sorting.slice(3);
-        podium = sorting.slice(0, 3);
+		podium = sorting.slice(0, 3);
 		getCurrentPosition(sorting,params.id);
     }
     
@@ -94,8 +95,8 @@
 		<a href="https://www.strava.com/oauth/authorize?client_id=35087&redirect_uri={url}/autorize-challenge&scope=read_all&state=generate&response_type=code">Sync</a>
 	</div>
 	<div class="mode">
-		<button on:click={()=> setMode('recent_run_totals')} class="{mode === 'recent_run_totals' ? 'active' : ''}">Recent 4 Weeks</button>
 		<button on:click={()=> setMode('ytd_run_totals')} class="{mode === 'ytd_run_totals' ? 'active' : ''}">Year to Date</button>
+		<button on:click={()=> setMode('recent_run_totals')} class="{mode === 'recent_run_totals' ? 'active' : ''}">Recent 4 Weeks</button>
 	</div>
 </main>
 
