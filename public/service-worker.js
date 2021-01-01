@@ -24,55 +24,55 @@ const saveSubscription = async subscription => {
     return response.json()
 }
 
-self.addEventListener('install',function(e){
-    e.waitUntil(
-        caches.open('derby').then((cache)=>{
-            const contentToCache = [
-                '/',
-                '/build/bundle.js',
-                '/build/bundle.css',
-                '/global.css',
-                '/favicon.png',
-                '/index.html',
-                '/manifest.json',
-                '/app.js',
-                '/icon.png'
-            ]
-            return cache.addAll(contentToCache)
-        })
-    )
-})
+// self.addEventListener('install',function(e){
+//     e.waitUntil(
+//         caches.open('derby').then((cache)=>{
+//             const contentToCache = [
+//                 '/',
+//                 '/build/bundle.js',
+//                 '/build/bundle.css',
+//                 '/global.css',
+//                 '/favicon.png',
+//                 '/index.html',
+//                 '/manifest.json',
+//                 '/app.js',
+//                 '/icon.png'
+//             ]
+//             return cache.addAll(contentToCache)
+//         })
+//     )
+// })
 
-self.addEventListener('fetch', function(event) {
-    console.log(event.request.url);
-    event.respondWith(
-        caches.match(event.request).then(function(response) {
-            return response || fetch(event.request);
-        })
-    );
-});
+// self.addEventListener('fetch', function(event) {
+//     console.log(event.request.url);
+//     event.respondWith(
+//         caches.match(event.request).then(function(response) {
+//             return response || fetch(event.request);
+//         })
+//     );
+// });
 
 
 self.addEventListener('activate',async ()=>{
-    try{    
-        const applicationServerKey = urlB64ToUint8Array('BGffNEayVQv13jepXYiEW5mgNiwPit1PVWp2IUX0l96Cgav9JSv1q9z3WKu38A7mrimahloCTCQrlxs-3IBjU0g')
-        const options = { applicationServerKey, userVisibleOnly: true }
-        const subscription = await self.registration.pushManager.subscribe(options)
-        const response = await saveSubscription(subscription)
-        // console.log(response)
-    }catch(err){
-        console.log('ERROR',err)
-    }
+    // try{    
+    //     const applicationServerKey = urlB64ToUint8Array('BGffNEayVQv13jepXYiEW5mgNiwPit1PVWp2IUX0l96Cgav9JSv1q9z3WKu38A7mrimahloCTCQrlxs-3IBjU0g')
+    //     const options = { applicationServerKey, userVisibleOnly: true }
+    //     const subscription = await self.registration.pushManager.subscribe(options)
+    //     const response = await saveSubscription(subscription)
+    //     // console.log(response)
+    // }catch(err){
+    //     console.log('ERROR',err)
+    // }
 })
 
-self.addEventListener('push', function(event) {
-    if (event.data) {
-        const data = JSON.parse(event.data.text())
-        showLocalNotification(data.title,data.message,self.registration);
-    } else {
-        console.log('Push event but no data')
-    }
-})
+// self.addEventListener('push', function(event) {
+//     if (event.data) {
+//         const data = JSON.parse(event.data.text())
+//         showLocalNotification(data.title,data.message,self.registration);
+//     } else {
+//         console.log('Push event but no data')
+//     }
+// })
 const showLocalNotification = (title, body, swRegistration)=>{
     const options = {
         body,
@@ -80,20 +80,20 @@ const showLocalNotification = (title, body, swRegistration)=>{
     swRegistration.showNotification(title,options);
 }
 
-self.addEventListener('fetch', function(event) {
-    event.respondWith(
-      caches.match(event.request).then(function(response) {
-        if (response) {
-          return response;
-        } else {
-          return fetch(event.request).then(function(res) {
-            return caches.open('dynamic').then(function(cache) {
-              cache.put(event.request.url, res.clone());
-              return res;
-            });
-          });
-        }
-      })
-    );
-  });
+// self.addEventListener('fetch', function(event) {
+//     event.respondWith(
+//       caches.match(event.request).then(function(response) {
+//         if (response) {
+//           return response;
+//         } else {
+//           return fetch(event.request).then(function(res) {
+//             return caches.open('dynamic').then(function(cache) {
+//               cache.put(event.request.url, res.clone());
+//               return res;
+//             });
+//           });
+//         }
+//       })
+//     );
+//   });
   
