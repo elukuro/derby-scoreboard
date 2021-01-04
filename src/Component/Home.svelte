@@ -72,6 +72,7 @@
 	{#if loading}
 		<div class="loading"/>
 	{/if}
+	<a href="/#/help" class="help">Butuh bantuan ? </a>
 	<div class="challenge">
         {#if params.id}
             <CurrentPosition data = {currentPosition} />
@@ -101,6 +102,17 @@
 </main>
 
 <style lang="scss">
+	.help{
+		background: #fff;
+		opacity: .7;
+		padding: 5px;
+		border-bottom-left-radius: 10px;
+		position:fixed;
+		z-index:2;
+		right:0px;
+		font-size: 12px;
+		color:#555;
+	}
 	.challenge{
 		background: #1488CC;  /* fallback for old browsers */
 		background: -webkit-linear-gradient(to top, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
