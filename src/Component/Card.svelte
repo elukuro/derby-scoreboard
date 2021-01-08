@@ -1,4 +1,5 @@
 <script>
+    import LastUpdate from './LastUpdate.svelte';
      export let challenge;
      export let index;
      export let mode;
@@ -7,12 +8,16 @@
 </script>
 
 <article class="cardScore">
-    <slot></slot>
     <div class="athlete">
     <h2>#{index +4}</h2>
         <img src={challenge.athlete.profile} alt="profile image" onerror="this.src='/icon.png'"/>
         <div class="athlete-info">
             <h4><span>{challenge.athlete.firstname} {challenge.athlete.lastname}</span></h4>
+            {#if challenge.lastUpdate}
+                <div class="last-update">
+                    <LastUpdate lastUpdate={challenge.lastUpdate}/>
+                </div>
+            {/if}
             <!-- <p><span>{(athlete.city !== undefined) ? athlete.city:''}</span></p> -->
         </div>
     </div>
@@ -58,6 +63,14 @@
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
+                }
+                .last-update{
+                    margin-top:4px;
+                    background:#1488CC;
+                    border-radius:5px;
+                    display:inline-block;
+                    width:auto;
+                    padding:0px 4px;
                 }
             }
         }

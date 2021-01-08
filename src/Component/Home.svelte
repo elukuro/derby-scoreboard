@@ -72,7 +72,7 @@
 	{#if loading}
 		<div class="loading"/>
 	{/if}
-	<a href="/#/help" class="help">Butuh bantuan ? </a>
+	<a href="/#/help" class="help">Need help ?</a>
 	<div class="challenge">
         {#if params.id}
             <CurrentPosition data = {currentPosition} />

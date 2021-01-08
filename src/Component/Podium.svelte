@@ -1,4 +1,5 @@
 <script>
+    import LastUpdate from './LastUpdate.svelte';
     export let podium;
     export let mode;
 </script>
@@ -17,6 +18,11 @@
                         {winner.workout[mode].count} <span>Run</span> {Math.floor(winner.workout[mode].moving_time/60/60)} <span>Hour</span>
                     </span>
                 </div>
+                {#if winner.lastUpdate}
+                    <div class="last-update">
+                        <LastUpdate lastUpdate={winner.lastUpdate}/>
+                    </div>
+                {/if}
             </div>
         </div>
     {/each}
@@ -33,6 +39,13 @@
      z-index: 2;
      bottom:-5px;
      padding-top:30px;
+    .last-update{
+        margin-top:4px;
+        background:#555;
+        border-radius:5px;
+        display:block;
+        width:100%;
+    }
      &-wrapper{
         background: #83a4d4;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to bottom, #b6fbff, #83a4d4);  /* Chrome 10-25, Safari 5.1-6 */
@@ -40,6 +53,7 @@
         border-top-left-radius: 60px;
         border-top-right-radius: 60px;
         padding-bottom:80px;
+        position:relative;
         &:nth-child(1){
             height:180px;
         }
