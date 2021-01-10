@@ -12,7 +12,7 @@
                 <div class="athlete-info">
                     <p>{winner.athlete.firstname}</p>
                     <span>
-                        {Math.floor(winner.workout[mode].distance/1000)}<span>KM</span>
+                        {(winner.workout[mode].distance/1000).toFixed(2)}<span>KM</span>
                     </span>
                     <span class="detail">
                         {winner.workout[mode].count} <span>Run</span> {Math.floor(winner.workout[mode].moving_time/60/60)} <span>Hour</span>

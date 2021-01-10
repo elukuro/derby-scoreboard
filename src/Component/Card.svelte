@@ -23,7 +23,7 @@
     </div>
     <div class="workout">
         <p>
-            {Math.floor(challenge.workout[mode].distance/1000)} <span>KM</span> <br/>
+            {(challenge.workout[mode].distance/1000).toFixed(2)} <span>KM</span> <br/>
             {challenge.workout[mode].count} <span>Run</span> {Math.floor(challenge.workout[mode].moving_time/60/60)} <span>Hour</span>
         </p> 
     </div>
