@@ -40,11 +40,14 @@
      bottom:-5px;
      padding-top:30px;
     .last-update{
-        margin-top:4px;
-        background:#555;
-        border-radius:5px;
-        display:block;
-        width:100%;
+        background: #1488CC;
+        border-radius: 0px;
+        display: block;
+        width: 100%;
+        position: absolute;
+        bottom: 5px;
+        left: 0px;
+        padding: 3px 0px;
     }
      &-wrapper{
         background: #83a4d4;  /* fallback for old browsers */

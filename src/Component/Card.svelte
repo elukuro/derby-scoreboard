@@ -67,10 +67,10 @@
                 .last-update{
                     margin-top:4px;
                     background:#1488CC;
-                    border-radius:5px;
+                    border-radius:3px;
                     display:inline-block;
                     width:auto;
-                    padding:0px 4px;
+                    padding:2px 4px;
                 }
             }
         }

@@ -95,10 +95,12 @@
 	<div class="sync">
 		<a href="https://www.strava.com/oauth/authorize?client_id=35087&redirect_uri={url}/autorize-challenge&scope=read_all&state=generate&response_type=code">Sync</a>
 	</div>
+	<!-- 
 	<div class="mode">
 		<button on:click={()=> setMode('ytd_run_totals')} class="{mode === 'ytd_run_totals' ? 'active' : ''}">Year to Date</button>
 		<button on:click={()=> setMode('recent_run_totals')} class="{mode === 'recent_run_totals' ? 'active' : ''}">Recent 4 Weeks</button>
 	</div>
+	-->
 </main>
 
 <style lang="scss">
