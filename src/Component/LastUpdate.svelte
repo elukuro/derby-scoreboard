@@ -1,6 +1,6 @@
 <script>
      export let lastUpdate;
-     const last = 1609606800000;
+     // const last = 1612573544609;
      const seconds = Math.floor((Date.now() - lastUpdate)/1000);
      const minute = Math.floor(seconds / 60);
      const hour = Math.floor(minute / 60);

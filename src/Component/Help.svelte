@@ -29,17 +29,26 @@
         </li>
         <li>
             <span class="qna">Pertanyaan:</span>
-                <h3>Apa itu Year to date dan Recent 4 weeks</h3>
+                <h3>Data apa yang diambil ?</h3>
             <span class="qna">Jawaban:</span>
-                <ol>
+                <ul>
                     <li>
-                        <span>Year to date adalah klasemen yang diambil dari Awal tahun berjalan ke hari ini</span>
+                        <span>klasemen yang diambil dari Awal tahun berjalan sampai hari ini</span><br/>
+                        <span>Catatan: diharapkan untuk rutin melakukan sync agar data yang ada selalu up-to-date</span>
                     </li>
+                </ul>
+                
+        </li>
+        <li>
+            <span class="qna">Pertanyaan:</span>
+                <h3>Apa itu female only ?</h3>
+            <span class="qna">Jawaban:</span>
+                <ul>
                     <li>
-                        <span>Recent 4 weeks adalah klasemen yang diambil di empat minggu terakhir</span>
+                        <span>Filter untuk menampilkan hanya data perempuan (female) di klasemen</span><br/>
                     </li>
-                </ol>
-                <span>Catatan: diharapkan untuk rutin melakukan sync agar data yang ada selalu up-to-date</span>
+                </ul>
+                
         </li>
         <li>
             <span class="qna">Pertanyaan:</span>

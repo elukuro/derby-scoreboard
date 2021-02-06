@@ -16,12 +16,13 @@
 	let podium = [];
     let height = 0;
 	let currentPosition = {};
+	let isFemale = false;
 	onMount(async () => {
-		fetchData();
+		fetchData(true);
 		confetti();
     });
-    async function getData() {
-		loading = true;
+    async function getData(withLoading) {
+		loading = withLoading;
 		try{
 			const response = await axios.get(`${url}/activity-list-challenge`);
 			const sorting = response.data.sort((a,b)=>b.workout[mode].distance - a.workout[mode].distance);
@@ -42,20 +43,26 @@
 		var confetti = new ConfettiGenerator(confettiSettings);
 		confetti.render();
 	}
-	async function fetchData() {
-		response = await getData();
-		challenges =response.slice(3);
-        podium = response.slice(0, 3);
-        getCurrentPosition(response,params.id);
+	async function fetchData(withLoading) {
+		response = await getData(withLoading);		
+		let data = {};
+		if(!isFemale){
+			data = response;
+		}else{
+			data = response.filter((item)=>item.athlete.sex === 'F');
+		}
+		challenges =data.slice(3)
+		podium = data.slice(0, 3);
+        getCurrentPosition(data,params.id);
 	}
 
-	function setMode(val) {
-		mode = val;
-		const sorting = response.sort((a,b)=>b.workout[mode].distance - a.workout[mode].distance);
-		challenges =sorting.slice(3);
-		podium = sorting.slice(0, 3);
-		getCurrentPosition(sorting,params.id);
-    }
+	// function setMode(val) {
+	// 	mode = val;
+	// 	const sorting = response.sort((a,b)=>b.workout[mode].distance - a.workout[mode].distance);
+	// 	challenges =sorting.slice(3);
+	// 	podium = sorting.slice(0, 3);
+	// 	getCurrentPosition(sorting,params.id);
+    // }
     
     function getCurrentPosition(data,id) {
         if(id){
@@ -64,7 +71,12 @@
                 athlete:data.find((item)=> item.athlete.id == id).athlete.firstname
             } 
         }
-    }
+	}
+	
+	async function femaleOnly(){
+		isFemale = !isFemale;
+		fetchData(false);	
+	}
   
 </script>
 <svelte:window bind:innerHeight={height}/>
@@ -81,6 +93,9 @@
 			<Podium podium={podium} mode={mode}/>
 		{/if}
 		<div class="result">
+			<div class="filter-wrapper">
+				<button on:click={femaleOnly} class = "filter">Female only:<span>{isFemale ? 'ON' : 'OFF'}</span></button>	
+			</div>
 			<div class="result-wrapper" style="height:{Math.floor(height/2)-10}px">
 				{#if challenges.length >=1}
 					{#each challenges as challenge,index}
@@ -104,6 +119,20 @@
 </main>
 
 <style lang="scss">
+	.filter{
+		padding:none;
+		font-size:10px;
+		background:#fff;
+		border:1px solid #666;
+		border-radius:3px;
+		span{
+			font-weight:bold;
+		}
+		&-wrapper{
+			text-align: right;
+			padding-bottom:4px;
+		}
+	}
 	.help{
 		background: #fff;
 		opacity: .7;
@@ -137,7 +166,7 @@
 			font-weight: bold;
 		}
 		.result{
-			padding:40px 10px 50px 10px;
+			padding:20px 10px 50px 10px;
 			background:#fff;
 			border-top-left-radius:20px;
 			border-top-right-radius:20px;
